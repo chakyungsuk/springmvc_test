@@ -22,8 +22,8 @@ public class DurianController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/cha", method = RequestMethod.GET)
-	public String durian(Locale locale, Model model) {
+	@RequestMapping(value = "/durianList", method = RequestMethod.GET)
+	public String durianList(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		Date date = new Date();
@@ -33,7 +33,21 @@ public class DurianController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "durian";
+		return "durian/durian";
+	}
+	
+	@RequestMapping(value = "/durianlogin", method = RequestMethod.GET)
+	public String durianlogin(Locale locale, Model model) {
+		logger.info("Welcome home! The client locale is {}.", locale);
+		
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		
+		String formattedDate = dateFormat.format(date);
+		
+		model.addAttribute("serverTime", formattedDate );
+		
+		return "durian/durianlogin";
 	}
 	
 }
